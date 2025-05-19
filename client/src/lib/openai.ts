@@ -7,29 +7,29 @@ const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY
 });
 
-export interface ChatMessage {
+export type ChatMessage = {
   role: "system" | "user" | "assistant";
   content: string;
-}
+};
 
 export async function generateChatResponse(messages: ChatMessage[]) {
   try {
     const response = await openai.chat.completions.create({
       model: OPENAI_MODEL,
-      messages,
+      messages: messages as any,
       temperature: 0.7,
     });
 
     return response.choices[0].message.content;
   } catch (error) {
     console.error("Error generating chat response:", error);
-    throw error;
+    return "I'm having trouble connecting to my knowledge system. Please try again in a moment.";
   }
 }
 
 export async function generateTitle(messages: ChatMessage[]) {
   try {
-    const prompt = [
+    const prompt: ChatMessage[] = [
       ...messages,
       {
         role: "user",
@@ -39,12 +39,12 @@ export async function generateTitle(messages: ChatMessage[]) {
 
     const response = await openai.chat.completions.create({
       model: OPENAI_MODEL,
-      messages: prompt,
+      messages: prompt as any,
       temperature: 0.7,
       max_tokens: 10
     });
 
-    return response.choices[0].message.content?.trim();
+    return response.choices[0].message.content?.trim() || "New conversation";
   } catch (error) {
     console.error("Error generating title:", error);
     return "New conversation";
@@ -53,7 +53,7 @@ export async function generateTitle(messages: ChatMessage[]) {
 
 export async function generateSummary(messages: ChatMessage[]) {
   try {
-    const prompt = [
+    const prompt: ChatMessage[] = [
       ...messages,
       {
         role: "user",
@@ -63,12 +63,12 @@ export async function generateSummary(messages: ChatMessage[]) {
 
     const response = await openai.chat.completions.create({
       model: OPENAI_MODEL,
-      messages: prompt,
+      messages: prompt as any,
       temperature: 0.7,
       max_tokens: 50
     });
 
-    return response.choices[0].message.content?.trim();
+    return response.choices[0].message.content?.trim() || "";
   } catch (error) {
     console.error("Error generating summary:", error);
     return "";
@@ -77,7 +77,7 @@ export async function generateSummary(messages: ChatMessage[]) {
 
 export async function generateInsights(messages: ChatMessage[]) {
   try {
-    const prompt = [
+    const prompt: ChatMessage[] = [
       {
         role: "system",
         content: 
@@ -96,7 +96,7 @@ export async function generateInsights(messages: ChatMessage[]) {
 
     const response = await openai.chat.completions.create({
       model: OPENAI_MODEL,
-      messages: prompt,
+      messages: prompt as any,
       temperature: 0.7,
       response_format: { type: "json_object" },
     });

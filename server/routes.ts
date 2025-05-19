@@ -87,7 +87,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       
       // Add AI message to conversation
       await storage.addMessage(conversation.id, {
-        content: result.reply,
+        content: typeof result.reply === 'string' ? result.reply : "I'm having trouble processing your message right now.",
         sender: 'ai',
       });
       
@@ -95,7 +95,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       if (result.title || result.summary) {
         await storage.updateConversation(conversation.id, {
           title: result.title || conversation.title,
-          summary: result.summary || conversation.summary,
+          summary: result.summary || conversation.summary || "",
           insights: result.insights,
         });
       }

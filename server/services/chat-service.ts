@@ -5,7 +5,25 @@ import {
   generateInsights,
   ChatMessage
 } from "@/lib/openai";
-import { Conversation } from "@shared/schema";
+
+// Using our own Conversation type to match storage
+type Message = {
+  id: number;
+  conversationId: string;
+  content: string;
+  sender: 'user' | 'ai';
+  timestamp: string;
+};
+
+type Conversation = {
+  id: string;
+  title: string;
+  summary: string;
+  insights?: any;
+  createdAt: string;
+  updatedAt: string;
+  messages: Message[];
+};
 
 export class ChatService {
   // System prompt for the dating therapist context
@@ -61,11 +79,11 @@ export class ChatService {
     let insights = null;
 
     if (conversation.messages.length >= 2 && (!title || title === "New conversation")) {
-      title = await generateTitle(messages);
+      title = await generateTitle(messages) || "New conversation";
     }
 
     if (conversation.messages.length >= 2 && !summary) {
-      summary = await generateSummary(messages);
+      summary = await generateSummary(messages) || "";
     }
 
     // Generate insights after a few exchanges
