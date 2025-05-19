@@ -1,0 +1,39 @@
+Project Title: AI Dating Therapist – Emotional Support Through Smart Conversations
+
+Description:
+We’re building an AI-powered dating therapist — a web app that helps users navigate the emotional complexities of modern relationships. Whether it’s overanalyzing a text, managing emotional detachment, or processing heartbreak, the app provides instant, private, and emotionally intelligent conversations that feel like talking to a wise, non-judgmental friend.
+
+Tech Stack:
+
+Frontend: Next.js, Tailwind CSS
+
+Backend: Node.js with Supabase/PostgreSQL
+
+AI Engine: OpenAI API (GPT-4-tuned for emotional depth and dating context)
+
+Core Features:
+✅ Conversational AI Therapist — deeply trained on dating psychology, attachment styles, emotional patterns, and conflict resolution
+✅ Chat Interface — sleek, mobile-first design with smart prompt handling
+✅ Session History — view and revisit all past chats in a sidebar, similar to ChatGPT
+✅ "New Chat" Button — reset context and start fresh anytime
+✅ Loading Spinner — smooth UI while waiting for AI responses
+✅ Timestamped Conversations — every message logged with readable time metadata
+✅ Emotion Tracking — detect and summarize user mood over time
+✅ Personalized Prompts — reflection questions tailored to user behavior and emotional triggers
+✅ Therapy-Inspired Journaling — guided journaling entries based on recent conversations
+✅ Weekly Insights Report — summary of topics, emotional shifts, and recurring issues
+✅ Tagging & Bookmarking — let users mark important moments and come back to them
+✅ AI-Generated Takeaways — concise bullet-point summaries after each session
+✅ Anonymized Story Sharing — share selected chats anonymously with the community to feel less alone
+✅ Referral System — invite friends and unlock extra features
+✅ Privacy by Design — end-to-end encryption and full user data control
+
+Target Audience:
+Emotionally curious millennials and Gen Z (18–35) who want to improve how they show up in relationships, break out of toxic patterns, or just need someone to talk to during lonely, confusing moments.
+
+Why It Matters:
+There’s no button for “How do I text my ex?” or “Why do I feel like I push people away?” Most mental health tools focus on anxiety or productivity — but romantic and emotional pain is the #1 reason people suffer quietly. This app makes emotional reflection accessible, relatable, and stigma-free.
+
+Vision:
+To become the go-to emotional companion for dating and relationships — blending AI, therapy-inspired tools, and real user stories to foster emotional literacy and healthier love lives.
+
